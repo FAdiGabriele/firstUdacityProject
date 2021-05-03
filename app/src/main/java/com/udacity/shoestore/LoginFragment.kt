@@ -11,8 +11,6 @@ import com.udacity.shoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,6 +19,8 @@ class LoginFragment : Fragment() {
             inflater, R.layout.fragment_login, container, false)
         return binding.root
     }
+
+    
 
 
 }
