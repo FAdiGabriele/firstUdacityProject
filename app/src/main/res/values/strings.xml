@@ -8,4 +8,17 @@
     <string name="password_hint">Insert password</string>
     <string name="login_label">Login</string>
     <string name="register_label">Register</string>
+    <string name="wrong_credential">Wrong email or password</string>
+    <string name="invalid_credential">Invalid email or password less than 6 characters</string>
+
+    <!-- strings of WelcomeFragment -->
+    <string name="welcome">Welcome</string>
+    <string name="welcome_back">Welcome back</string>
+
+
+    <!-- string of InstructionFragment -->
+
+    <!-- menù items -->
+    <string name="logout">Logout</string>
+
 </resources>

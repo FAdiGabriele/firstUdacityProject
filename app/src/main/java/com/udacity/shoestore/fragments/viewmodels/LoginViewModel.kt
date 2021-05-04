@@ -1,4 +1,4 @@
-package com.udacity.shoestore.viewmodels
+package com.udacity.shoestore.fragments.viewmodels
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 class LoginViewModel : ViewModel() {
 
     /**
-     * function that take inputs and put them in a bundle for passing data through safe args
+     * function that take in inputs [email] and if a user [isNewUser]
+     * and put them in a bundle for passing data through safe args to welcome fragment
      */
     fun prepareArguments(email : String, isNewUser : Boolean) : Bundle{
         val args = Bundle()
@@ -17,7 +18,8 @@ class LoginViewModel : ViewModel() {
     }
 
     /**
-     * function that simulate an login
+     * function that simulate a login
+     * @return Boolean
      */
     fun checkLogin(email: String, password : String) : Boolean{
         if(email != "fabioa.digabriele@gmail.com"){
@@ -30,7 +32,10 @@ class LoginViewModel : ViewModel() {
     }
 
     /**
-     * function that check if the input for registration is valid
+     * function that check if
+     * [email] meets the requirements of the RFC 822
+     * [password] is at least 6 characters long
+     * @return boolean
      */
     fun checkRegistration(email: String, password: String):Boolean{
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
