@@ -9,9 +9,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.databinding.SingleShoeElementBinding
+import com.udacity.shoestore.fragments.viewmodels.GeneralViewModel
+import com.udacity.shoestore.models.Shoe
 
 
 class ShoeListFragment : Fragment() {
+
+    lateinit var viewModel : GeneralViewModel
+    lateinit var binding : FragmentShoeListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,9 +25,11 @@ class ShoeListFragment : Fragment() {
     ): View {
 
         //DataBinding
-        val binding: FragmentShoeListBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false
         )
+
+        viewModel = GeneralViewModel()
 
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
@@ -29,6 +37,12 @@ class ShoeListFragment : Fragment() {
 
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        generateList(viewModel.shoeList.value!!)
     }
 
 
@@ -42,4 +56,13 @@ class ShoeListFragment : Fragment() {
                 || super.onOptionsItemSelected(item)
     }
 
+    private fun generateList(list : ArrayList<Shoe>){
+        for(shoe in list){
+            val shoeView : View = View.inflate(requireContext(),R.layout.single_shoe_element, null)
+            val shoeBinding = DataBindingUtil.getBinding<SingleShoeElementBinding>(shoeView)!!
+            shoeBinding.nameValue.text = shoe.name
+            shoeBinding.companyValue.text = shoe.company
+           binding.listShoesContainer.addView(shoeView)
+        }
+    }
 }
