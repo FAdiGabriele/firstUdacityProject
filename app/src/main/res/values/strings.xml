@@ -17,10 +17,14 @@
     <string name="go_to_instructions">instructions</string>
 
 
-    <!-- string of InstructionFragment -->
+    <!-- strings of InstructionFragment -->
     <string name="go_to_list">continue</string>
 
-    <!-- menù items -->
+    <!-- strings of ShoeListFragment -->
+    <string name="name">Name:    </string>
+    <string name="company">Company: </string>
+
+    <!-- menu items -->
     <string name="logout">Logout</string>
 
 </resources>

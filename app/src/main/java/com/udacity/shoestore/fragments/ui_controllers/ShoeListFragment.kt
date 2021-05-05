@@ -1,5 +1,6 @@
 package com.udacity.shoestore.fragments.ui_controllers
 
+import android.R.attr.*
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -56,13 +57,20 @@ class ShoeListFragment : Fragment() {
                 || super.onOptionsItemSelected(item)
     }
 
-    private fun generateList(list : ArrayList<Shoe>){
+    private fun generateList(list: ArrayList<Shoe>){
         for(shoe in list){
-            val shoeView : View = View.inflate(requireContext(),R.layout.single_shoe_element, null)
-            val shoeBinding = DataBindingUtil.getBinding<SingleShoeElementBinding>(shoeView)!!
+            val shoeBinding = DataBindingUtil.inflate<SingleShoeElementBinding>(
+                layoutInflater,
+                R.layout.single_shoe_element,
+                null,
+                false
+            )
             shoeBinding.nameValue.text = shoe.name
             shoeBinding.companyValue.text = shoe.company
-           binding.listShoesContainer.addView(shoeView)
+
+            binding.listShoesContainer.addView(shoeBinding.root)
+
+
         }
     }
 }
