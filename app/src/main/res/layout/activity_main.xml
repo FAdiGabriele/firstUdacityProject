@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Introduced DataBinding on MainActivity Layout-->
+<?xml version="1.0" encoding="utf-8"?><!-- Introduced DataBinding on MainActivity Layout-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -7,7 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       android:orientation="vertical">
+        android:orientation="vertical">
 
         <!-- Introduced the NavHostFragment in the activity_main layout -->
         <fragment

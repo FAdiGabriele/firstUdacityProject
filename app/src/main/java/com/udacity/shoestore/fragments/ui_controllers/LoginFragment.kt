@@ -28,18 +28,44 @@ class LoginFragment : Fragment() {
         val viewModel = LoginViewModel()
 
         binding.loginButton.setOnClickListener {
-            if(viewModel.checkLogin(binding.emailEdittext.text.toString(), binding.passwordEdittext.text.toString()))
-                goToWelcomeFragment(viewModel.prepareArguments(binding.emailEdittext.text.toString(), false))
+            if (viewModel.checkLogin(
+                    binding.emailEdittext.text.toString(),
+                    binding.passwordEdittext.text.toString()
+                )
+            )
+                goToWelcomeFragment(
+                    viewModel.prepareArguments(
+                        binding.emailEdittext.text.toString(),
+                        false
+                    )
+                )
             else
-                Toast.makeText(requireContext(),resources.getText(R.string.wrong_credential), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    resources.getText(R.string.wrong_credential),
+                    Toast.LENGTH_LONG
+                ).show()
 
         }
 
         binding.registerButton.setOnClickListener {
-            if(viewModel.checkRegistration(binding.emailEdittext.text.toString(), binding.passwordEdittext.text.toString()))
-                goToWelcomeFragment(viewModel.prepareArguments(binding.emailEdittext.text.toString(), true))
+            if (viewModel.checkRegistration(
+                    binding.emailEdittext.text.toString(),
+                    binding.passwordEdittext.text.toString()
+                )
+            )
+                goToWelcomeFragment(
+                    viewModel.prepareArguments(
+                        binding.emailEdittext.text.toString(),
+                        true
+                    )
+                )
             else
-                Toast.makeText(requireContext(),resources.getText(R.string.invalid_credential), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    resources.getText(R.string.invalid_credential),
+                    Toast.LENGTH_LONG
+                ).show()
         }
 
         return binding.root
@@ -49,7 +75,7 @@ class LoginFragment : Fragment() {
      * function that allow take in input the email and the status of the user
      * and do the navigation to Welcome Fragment
      */
-    private fun goToWelcomeFragment(args : Bundle){
+    private fun goToWelcomeFragment(args: Bundle) {
         findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment, args)
     }
 

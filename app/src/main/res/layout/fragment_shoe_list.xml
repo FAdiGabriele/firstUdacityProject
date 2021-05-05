@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="general_view_model"
             type="com.udacity.shoestore.fragments.viewmodels.GeneralViewModel" />
