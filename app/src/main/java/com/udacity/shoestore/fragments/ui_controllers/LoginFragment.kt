@@ -15,8 +15,6 @@ import com.udacity.shoestore.fragments.viewmodels.LoginViewModel
 
 class LoginFragment : Fragment() {
 
-    private lateinit var viewModel: LoginViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +24,8 @@ class LoginFragment : Fragment() {
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false
         )
+
+        val viewModel = LoginViewModel()
 
         binding.loginButton.setOnClickListener {
             if(viewModel.checkLogin(binding.emailEdittext.text.toString(), binding.passwordEdittext.text.toString()))

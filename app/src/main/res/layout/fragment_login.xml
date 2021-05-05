@@ -2,17 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- I chose to manage this layout with ConstraintLayout because I need to manage many views with horizontal hierarchy -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue"
+        android:background="@color/colorPrimaryDark"
         tools:context=".fragments.ui_controllers.LoginFragment">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="141dp"
-            android:layout_height="123dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/email_label_textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -22,6 +23,7 @@
 
         <EditText
             android:id="@+id/password_edittext"
+            android:inputType="textPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"

@@ -12,7 +12,7 @@ class LoginViewModel : ViewModel() {
     fun prepareArguments(email : String, isNewUser : Boolean) : Bundle{
         val args = Bundle()
         args.putString("email", email)
-        args.putBoolean("isNew", isNewUser)
+        args.putBoolean("isNewUser", isNewUser)
 
        return args
     }
@@ -22,10 +22,10 @@ class LoginViewModel : ViewModel() {
      * @return Boolean
      */
     fun checkLogin(email: String, password : String) : Boolean{
-        if(email != "fabioa.digabriele@gmail.com"){
+        if(email != "pip@pip.it"){
             return false
         }
-        if (password != "ILoveAndroid"){
+        if (password != "pip"){
             return false
         }
         return true

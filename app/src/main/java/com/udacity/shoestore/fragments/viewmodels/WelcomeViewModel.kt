@@ -1,7 +1,6 @@
 package com.udacity.shoestore.fragments.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.WelcomeFragmentArgs
 
 class WelcomeViewModel : ViewModel() {
 

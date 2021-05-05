@@ -23,7 +23,6 @@ class InstructionFragment : Fragment() {
         val binding: FragmentInstructionBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_instruction, container, false
         )
-        setHasOptionsMenu(true)
 
         binding.continueButton.setOnClickListener {
             findNavController().navigate(R.id.action_instructionFragment_to_shoeListFragment)
@@ -32,15 +31,6 @@ class InstructionFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.main_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) || super.onOptionsItemSelected(item)
-
-    }
 
 
 }
