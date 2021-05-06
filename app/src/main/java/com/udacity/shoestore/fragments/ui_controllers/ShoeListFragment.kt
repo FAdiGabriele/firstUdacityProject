@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -11,7 +13,9 @@ import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.databinding.SingleShoeElementBinding
 import com.udacity.shoestore.fragments.viewmodels.GeneralViewModel
+import com.udacity.shoestore.fragments.viewmodels.GeneralViewModelProvider
 import com.udacity.shoestore.models.Shoe
+import kotlin.collections.ArrayList
 
 
 class ShoeListFragment : Fragment() {
@@ -34,6 +38,7 @@ class ShoeListFragment : Fragment() {
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
         }
+        binding.lifecycleOwner = this
 
         setHasOptionsMenu(true)
         return binding.root
@@ -42,7 +47,14 @@ class ShoeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        generateList(viewModel.shoeList.value!!)
+        arguments?.let {
+            val shoe = ShoeListFragmentArgs.fromBundle(it).addedShoe!!
+            viewModel.addShoe(shoe)
+        }
+
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer {
+                generateList(viewModel.shoeList.value!!)
+        })
     }
 
 
@@ -67,9 +79,12 @@ class ShoeListFragment : Fragment() {
             shoeBinding.nameValue.text = shoe.name
             shoeBinding.companyValue.text = shoe.company
 
+            shoeBinding.itemCard.setOnClickListener{
+                val shoeToSend = Bundle()
+                shoeToSend.putParcelable(resources.getString(R.string.shoe),shoe)
+                findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment, shoeToSend)
+            }
             binding.listShoesContainer.addView(shoeBinding.root)
-
-
         }
     }
 }
