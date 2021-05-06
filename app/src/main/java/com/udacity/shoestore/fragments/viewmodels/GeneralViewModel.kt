@@ -7,18 +7,20 @@ import com.udacity.shoestore.models.Shoe
 
 class GeneralViewModel : ViewModel() {
 
-    private var asd = MutableLiveData<ArrayList<Shoe>>()
+    private var _shoeList = MutableLiveData<MutableList<Shoe>>()
 
-    val shoeList: LiveData<ArrayList<Shoe>>
-    get() = asd
+    val shoeList: LiveData<List<Shoe>>
+    get() = _shoeList as LiveData<List<Shoe>>
+
+
 
 
     fun addShoe(shoe: Shoe) {
-        asd.value?.add(shoe)
+        _shoeList.value?.add(shoe)
     }
 
     init {
-        asd.value = arrayListOf(
+        _shoeList.value = arrayListOf(
             Shoe("Delsie Stella", 39.toDouble(), "Clarks", ""),
             Shoe("Edell", 36.toDouble(), "Bandolino", ""),
             Shoe("Haven", 40.toDouble(), "Aerosoles", ""),
@@ -27,4 +29,6 @@ class GeneralViewModel : ViewModel() {
             Shoe("Estee", 33.toDouble(), "Trotters", ""),
             Shoe("Simone", 39.toDouble(), "Wanted", ""))
     }
+
+
 }
