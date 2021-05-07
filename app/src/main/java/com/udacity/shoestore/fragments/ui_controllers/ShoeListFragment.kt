@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.databinding.SingleShoeElementBinding
@@ -20,8 +21,8 @@ import kotlin.collections.ArrayList
 
 class ShoeListFragment : Fragment() {
 
-    lateinit var viewModel: GeneralViewModel
     lateinit var binding: FragmentShoeListBinding
+    lateinit var viewModel: GeneralViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +34,8 @@ class ShoeListFragment : Fragment() {
             inflater, R.layout.fragment_shoe_list, container, false
         )
 
-        viewModel = GeneralViewModel()
+        val mainActivity = requireActivity() as MainActivity
+        binding.generalViewModel = mainActivity.viewModel
 
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
@@ -47,10 +49,7 @@ class ShoeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            val shoe = ShoeListFragmentArgs.fromBundle(it).addedShoe!!
-            viewModel.addShoe(shoe)
-        }
+        viewModel = binding.generalViewModel!!
 
         viewModel.shoeList.observe(viewLifecycleOwner, Observer {
                 generateList(viewModel.shoeList.value!!)
@@ -78,6 +77,7 @@ class ShoeListFragment : Fragment() {
             )
             shoeBinding.nameValue.text = shoe.name
             shoeBinding.companyValue.text = shoe.company
+            shoeBinding.sizeValue.text = shoe.size.toString()
 
             shoeBinding.itemCard.setOnClickListener{
                 val shoeToSend = Bundle()

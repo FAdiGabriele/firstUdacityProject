@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.fragments.viewmodels.GeneralViewModel
@@ -15,7 +17,7 @@ import com.udacity.shoestore.models.Shoe
 
 class ShoeDetailFragment : Fragment() {
 
-
+    lateinit var viewModel: GeneralViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,25 +28,21 @@ class ShoeDetailFragment : Fragment() {
             inflater, R.layout.fragment_shoe_detail, container, false
         )
 
-        arguments?.let {
-             val shoe = ShoeDetailFragmentArgs.fromBundle(requireArguments()).addedShoe!!
-                    binding.nameEdit.setText(shoe.name)
-                    binding.companyEdit.setText(shoe.company)
-                    binding.sizeEdit.setText(shoe.size.toString())
-                    binding.descriptionEdit.setText(shoe.description)
-        }
+        val mainActivity = requireActivity() as MainActivity
+        viewModel = mainActivity.viewModel
+        binding.generalViewModel = viewModel
 
-        binding.cancelButton.setOnClickListener {
+        binding.saveButton.setOnClickListener {
+            viewModel.addShoe(binding.shoeToAdd!!)
             findNavController().navigateUp()
         }
 
-        binding.saveButton.setOnClickListener {
-           val shoeToSend = Bundle()
-            val shoe = Shoe(binding.nameEdit.text.toString(),binding.sizeEdit.text.toString().toDouble(),binding.companyEdit.text.toString(), binding.descriptionEdit.text.toString())
-            shoeToSend.putParcelable(resources.getString(R.string.shoe),shoe)
-            findNavController().navigate(R.id.action_shoeDetailFragment_to_shoeListFragment, shoeToSend)
-
+        binding.cancelButton.setOnClickListener {
+            findNavController()
         }
+
+
+        binding.shoeToAdd= Shoe("",0.0,"","")
         return binding.root
     }
 

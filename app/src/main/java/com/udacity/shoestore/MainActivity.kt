@@ -7,9 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ActivityMainBinding
+import com.udacity.shoestore.fragments.viewmodels.GeneralViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var viewModel : GeneralViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
             this,
             R.layout.activity_main
         )
+
+        viewModel = GeneralViewModel()
         val navController = this.findNavController(R.id.myNavHostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
     }

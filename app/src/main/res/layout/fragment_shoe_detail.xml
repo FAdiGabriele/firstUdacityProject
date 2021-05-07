@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="general_view_model"
+            name="generalViewModel"
             type="com.udacity.shoestore.fragments.viewmodels.GeneralViewModel" />
+
+        <variable
+            name="shoeToAdd"
+            type="com.udacity.shoestore.models.Shoe" />
     </data>
 
     <!-- I choose to manage this layout with a ConstraintLayout for manage the view with the chains.
@@ -23,10 +28,10 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="@={shoeToAdd.name}"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 tools:text="name" />
@@ -55,14 +61,14 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <TextView
                 android:layout_width="match_parent"
@@ -77,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="@={shoeToAdd.company}"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 tools:text="company" />
@@ -84,50 +91,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/size"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp" />
-
-            <EditText
-                android:id="@+id/size_edit"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                tools:text="size" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <TextView
                 android:layout_width="match_parent"
@@ -142,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="@={shoeToAdd.description}"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 tools:text="description" />
@@ -150,10 +125,8 @@
 
         <Button
             android:id="@+id/cancel_button"
-            android:layout_width="0dp"
+            android:layout_width="347dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/buttons_background"
             android:text="@android:string/cancel"
             android:textColor="#FFFFFF"
@@ -168,10 +141,8 @@
 
         <Button
             android:id="@+id/save_button"
-            android:layout_width="0dp"
+            android:layout_width="347dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/buttons_background"
             android:text="@string/save"
             android:textColor="#FFFFFF"
@@ -182,6 +153,40 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/size"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/size_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:text="@={generalViewModel.transformerDoubleString(shoeToAdd.size)}"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                tools:text="size" />
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
