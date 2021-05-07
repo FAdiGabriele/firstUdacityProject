@@ -19,6 +19,7 @@
 
     <!-- strings of InstructionFragment -->
     <string name="go_to_list">continue</string>
+    <string name="instruction">INSTRUCTION</string>
 
     <!-- strings for ShoeDateil & ShoeList -->
     <string name="shoe">added_shoe</string>
