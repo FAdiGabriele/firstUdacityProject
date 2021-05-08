@@ -20,6 +20,8 @@
     <!-- strings of InstructionFragment -->
     <string name="go_to_list">continue</string>
     <string name="instruction">INSTRUCTION</string>
+    <string name="app_description">In this app, you can sell the shoes that you don\'t dress anymore following this steps:</string>
+    <string name="steps_description">1) Check if the shoe is already present \n2) add your shoe with the add function \n3) We notify you when our customer choose your shoe</string>
 
     <!-- strings for ShoeDateil & ShoeList -->
     <string name="shoe">added_shoe</string>

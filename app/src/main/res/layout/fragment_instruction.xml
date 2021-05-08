@@ -29,9 +29,21 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:gravity="center"
-            android:text="TextView"
+            android:text="@string/app_description"
             android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:text="@string/steps_description"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/continue_button"
