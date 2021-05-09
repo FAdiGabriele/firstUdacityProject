@@ -57,7 +57,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcome_message_textview"
-            tools:text="Mario" />
+            tools:text="[name_user]" />
 
         <Button
             android:id="@+id/continue_button"
