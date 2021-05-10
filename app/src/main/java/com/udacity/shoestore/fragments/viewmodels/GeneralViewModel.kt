@@ -8,15 +8,23 @@ import com.udacity.shoestore.models.Shoe
 
 class GeneralViewModel : ViewModel() {
 
+    /**
+     * Backing propriety of ArrayList of Shoes that allow to observe but not modify the array list
+     */
     private var _shoeList = MutableLiveData<ArrayList<Shoe>>()
-
     val shoeList: LiveData<ArrayList<Shoe>>
     get() = _shoeList
 
+    /**
+     * function that add a shoe to ArrayList
+     */
     fun addShoe(shoe: Shoe) {
         _shoeList.value?.add(shoe)
     }
 
+    /**
+     * Here, I specify the initial values of the ArrayList
+     */
     init {
         _shoeList.value = arrayListOf(
             Shoe("Delsie Stella", 39.toDouble(), "Clarks", ""),
@@ -29,10 +37,16 @@ class GeneralViewModel : ViewModel() {
 
     }
 
+    /**
+     * This function allow DataBinding to do a cast from double to String
+     */
     fun transformerDoubleString(double : Double) : String{
         return double.toString()
     }
 
+    /**
+     * This function allow DataBinding to do a cast from String to double
+     */
     @InverseMethod("transformerDoubleString")
     fun transformerStringDouble(string : String) : Double{
         if(string.isEmpty()) return 0.0
