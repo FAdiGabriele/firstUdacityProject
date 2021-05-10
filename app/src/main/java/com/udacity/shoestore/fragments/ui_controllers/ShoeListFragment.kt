@@ -49,10 +49,9 @@ class ShoeListFragment : Fragment() {
         viewModel = binding.generalViewModel!!
 
         viewModel.shoeList.observe(viewLifecycleOwner, Observer {
-                generateList(viewModel.shoeList.value!!)
+            generateList(viewModel.shoeList.value!!)
         })
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -78,8 +77,11 @@ class ShoeListFragment : Fragment() {
 
             shoeBinding.itemCard.setOnClickListener{
                 val shoeToSend = Bundle()
-                shoeToSend.putParcelable(resources.getString(R.string.shoe),shoe)
-                findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment, shoeToSend)
+                shoeToSend.putParcelable(resources.getString(R.string.shoe), shoe)
+                findNavController().navigate(
+                    R.id.action_shoeListFragment_to_shoeDetailFragment,
+                    shoeToSend
+                )
             }
             binding.listShoesContainer.addView(shoeBinding.root)
         }

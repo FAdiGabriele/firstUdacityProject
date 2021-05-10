@@ -15,8 +15,7 @@
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
             app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@id/navigator" />
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
