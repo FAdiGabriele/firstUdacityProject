@@ -52,9 +52,9 @@ class ShoeListFragment : Fragment() {
             generateList(viewModel.shoeList.value!!)
         })
 
-        //The reason that explain because I added this code is explained in the row 111
-
         // Added a callback for back navigation from this screen
+
+        //The reason that explain because I added this code is explained in the row 113
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
@@ -69,11 +69,13 @@ class ShoeListFragment : Fragment() {
         inflater.inflate(R.menu.main_menu, menu)
     }
 
+
     // Added a special instruction for navigating with action bar's menu
-    //The reason that explain because I edit this method is explained in the row 111
+
+    //The reason that explain because I edit this method is explained in the row 113
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
+        when (item.itemId) {
             R.id.loginFragment, android.R.id.home -> returnToLogin()
         }
 
@@ -115,10 +117,9 @@ class ShoeListFragment : Fragment() {
         Then I add an action called action_shoeListFragment_to_loginFragment,
         that allow navigation from shoeList to Login skipping onBoarding screens
      */
-    fun returnToLogin(){
+    fun returnToLogin() {
         findNavController().navigate(R.id.action_shoeListFragment_to_loginFragment)
     }
-
 
 
 }
