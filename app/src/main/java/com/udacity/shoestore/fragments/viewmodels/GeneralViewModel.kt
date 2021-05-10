@@ -53,6 +53,4 @@ class GeneralViewModel : ViewModel() {
         return string.toDouble()
     }
 
-
-
 }

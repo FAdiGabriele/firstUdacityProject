@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="general_view_model"
-            type="com.udacity.shoestore.fragments.viewmodels.GeneralViewModel" />
-    </data>
     <!-- I chose to put the scrollview inside a constraintLayout for allows to Fab to overlap the shoesList -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,6 +24,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="false"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="8dp"
             app:layout_constraintBottom_toTopOf="@+id/add_shoe_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

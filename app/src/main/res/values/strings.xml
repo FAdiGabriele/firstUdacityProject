@@ -31,6 +31,14 @@
     <string name="description">Description:</string>
     <string name="save">save</string>
 
+    <!--As suggested, I insert here the strings needed for input error for creating a shoe -->
+
+    <!-- string of input error shoe -->
+    <string name="name_error_input">Name must be not empty</string>
+    <string name="size_error_input">Size must be a positive value</string>
+    <string name="company_error_input">Company must be not empty</string>
+    <string name="description_error_input">Description must be not empty</string>
+
     <!-- menu items -->
     <string name="logout">Logout</string>
 

@@ -22,10 +22,10 @@ class LoginViewModel : ViewModel() {
      * @return Boolean
      */
     fun checkLogin(email: String, password: String): Boolean {
-        if (email != "pip@pip.it") {
+        if (email != "fabioa.digabriele@gmail.com") {
             return false
         }
-        if (password != "pip") {
+        if (password != "ILoveAndroid") {
             return false
         }
         return true

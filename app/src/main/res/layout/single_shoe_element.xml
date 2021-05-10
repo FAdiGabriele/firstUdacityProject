@@ -3,22 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="8dp"/>
-
+    <!-- As suggested , I improved the layout deleting the views that simulate a 8 dp margin top and bottom -->
         <androidx.cardview.widget.CardView
             android:id="@+id/item_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             app:cardCornerRadius="12dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,9 +131,4 @@
 
         </androidx.cardview.widget.CardView>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"/>
-
-    </LinearLayout>
 </layout>
